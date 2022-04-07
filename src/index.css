@@ -48,7 +48,7 @@ header {
   color: #ffffff;
 }
 
-form {
+.form {
   width: 550px;
   margin: auto;
   margin-top: 36px;
@@ -84,4 +84,11 @@ form {
   line-height: 19px;
   text-align: center;
   letter-spacing: -0.1em;
+}
+
+.meme--image {
+  margin-top: 36px;
+  margin-left: 37px;
+  width: 477px;
+  height: 320px;
 }
