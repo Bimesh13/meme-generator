@@ -18,24 +18,52 @@ export default function Meme() {
       randomImage: memesArray[randomIndex].url,
     }));
   }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setMeme((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  }
+
   return (
     <div className="form">
-      <div className="input--fields">
+      <form className="input--fields" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Top Text Goes Here"
-          className="form--input"
+          className="form--inputTop"
+          name="topText"
+          onChange={handleChange}
+          value={meme.topText}
         />
         <input
           type="text"
           placeholder="Bottom Text Goes Here"
-          className="form--input"
+          className="form--inputBottom"
+          name="bottomText"
+          onChange={handleChange}
+          value={meme.bottomText}
         />
+        <button
+          onClick={generateImage}
+          type="submit"
+          className="generate--button"
+        >
+          Get a new meme image 🖼
+        </button>
+      </form>
+
+      <div className="meme--layout">
+        <img src={meme.randomImage} className="meme--image" />
+        <h1 className="meme--text top">{meme.topText}</h1>
+        <h1 className="meme--text bottom">{meme.bottomText}</h1>
       </div>
-      <button onClick={generateImage} className="generate--button">
-        Get a new meme image 🖼
-      </button>
-      <img src={meme.randomImage} className="meme--image" />
     </div>
   );
 }
